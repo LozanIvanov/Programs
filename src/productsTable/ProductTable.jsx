@@ -1,21 +1,26 @@
 import { useState } from 'react';
 import  "./ProductTable.css";
 
-export default function FilterableProductTable( {products} ) 
+export default function FilterableProductTable( {products,inStockOnly} ) 
 {
 
   return (
     <div>
       <ProductTable 
-        products={products} />
+        products={products}
+        inStockOnly={inStockOnly}  />
     </div>
   );
 }
-function ProductTable({ products }) {
+function ProductTable({ products, inStockOnly }) {
 
     const categorizedProducts = {};
   
     products.forEach((product) => {
+      if (inStockOnly && !product.stocked) {
+        console.log(inStockOnly)
+        return;
+      }
       if (!categorizedProducts[product.category]) {
         categorizedProducts[product.category] = []; 
       }

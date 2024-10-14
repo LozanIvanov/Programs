@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import TicTocToe from './Tic-Tac-Toe/AppGameTic'
 import FilterableProductTable from './productsTable/ProductTable'
+import SearchBox from './productsTable/component/SearchBox';
 
 function App() {
 
@@ -15,10 +16,16 @@ function App() {
     { category: "Fruits", price: "$1", stocked: true, name: "Banana" },
   ];
   
+  const[inStockOnly,setInstockOnly]=useState(false)
 
   return (
     <>
-      <FilterableProductTable products={PRODUCTS}/>
+    
+       <SearchBox 
+       inStockOnly={inStockOnly}
+       onInStockOnlyChange={setInstockOnly}
+       />
+      <FilterableProductTable products={PRODUCTS} inStockOnly={inStockOnly}/> 
     </>
   )
 }
