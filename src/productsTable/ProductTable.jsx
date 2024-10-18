@@ -1,18 +1,19 @@
 import { useState } from 'react';
 import  "./ProductTable.css";
 
-export default function FilterableProductTable( {products,inStockOnly} ) 
+export default function FilterableProductTable( {products,inStockOnly,filterText} ) 
 {
 
   return (
     <div>
       <ProductTable 
         products={products}
-        inStockOnly={inStockOnly}  />
+        inStockOnly={inStockOnly}
+        filterText={filterText}  />
     </div>
   );
 }
-function ProductTable({ products, inStockOnly }) {
+function ProductTable({ products, inStockOnly,filterText }) {
 
     const categorizedProducts = {};
   
@@ -21,6 +22,10 @@ function ProductTable({ products, inStockOnly }) {
         console.log(inStockOnly)
         return;
       }
+      if (product.name.toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
+        return;
+      }
+  
       if (!categorizedProducts[product.category]) {
         categorizedProducts[product.category] = []; 
       }

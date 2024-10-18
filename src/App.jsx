@@ -16,7 +16,8 @@ function App() {
     { category: "Fruits", price: "$1", stocked: true, name: "Banana" },
   ];
   
-  const[inStockOnly,setInstockOnly]=useState(false)
+  const[inStockOnly,setInstockOnly]=useState(false);
+  const[filterText,setFilterText]=useState('');
 
   return (
     <>
@@ -24,8 +25,14 @@ function App() {
        <SearchBox 
        inStockOnly={inStockOnly}
        onInStockOnlyChange={setInstockOnly}
+       filterText={filterText}
+       onFilterTextChange={setFilterText}
        />
-      <FilterableProductTable products={PRODUCTS} inStockOnly={inStockOnly}/> 
+      <FilterableProductTable
+       products={PRODUCTS} 
+      inStockOnly={inStockOnly}
+      filterText={filterText}
+      /> 
     </>
   )
 }
