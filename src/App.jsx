@@ -3,6 +3,7 @@ import './App.css'
 import TicTocToe from './Tic-Tac-Toe/AppGameTic'
 import FilterableProductTable from './productsTable/ProductTable'
 import SearchBox from './productsTable/component/SearchBox';
+import AppRecipes from'./listOfRecipes/AppRecipes';
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
       inStockOnly={inStockOnly}
       filterText={filterText}
       /> 
+      <AppRecipes/>
     </>
   )
 }
